@@ -17,7 +17,7 @@ from django import urls
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-#from UnicornLog.UnicornLog_REST import views
+#from UnicornLog.Unicorn_REST import views
 
 router = routers.DefaultRouter()
 #router.register(r'users', views.UserViewSet)
