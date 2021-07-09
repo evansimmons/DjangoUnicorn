@@ -1,24 +1,24 @@
 from django.db import models
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer
-
-# Create your views here.
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+#views 
+def index(request):
+    """home page for UnicornLog_REST"""
+    return render(request, 'std/index.html')
+
+def Locations(request):
+    """view the locations page"""
+    return render(request, 'std/Locations.html')
+
+def Unicorns(request):
+    """view the Unicorns page"""
+    return render(request, 'std/Unicorns.html')
+
+def Sightings(request):
+    """view the sightings page"""
+    return render(request, 'std/Sightings.html')
+
+    
+    

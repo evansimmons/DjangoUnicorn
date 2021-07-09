@@ -1,13 +1,14 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
-from pygments.lexers import get_all_lexers
-from pygments.styles import get_all_styles
 #from django_countries.fields import CountryField
 
-LEXERS = [item for item in get_all_lexers() if item[1]]
-LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
-STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
+#--- perhaps go with other API features
+#from pygments.lexers import get_all_lexers
+#from pygments.styles import get_all_styles
+#LEXERS = [item for item in get_all_lexers() if item[1]]
+#LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+#STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 
 # Create your models here.
@@ -18,7 +19,7 @@ class Location(models.Model):
 #    country = CountryField()
     def __str__(self):
         """returns thy self as text"""
-        return self.text    
+        return self.name    
 
 class Unicorn(models.Model):
     """this is a Unicorn"""
@@ -34,14 +35,21 @@ class Unicorn(models.Model):
     description = models.TextField()
     def __str__(self):
         """returns thy self as text"""
-        return self.text
+        return self.name
 
 class Sighting(models.Model):
     """an individual sighting of a unicorn"""
     location = models.ForeignKey(Location, on_delete=CASCADE)
     description = models.TextField()
     unicorn = models.ForeignKey(Unicorn, on_delete=CASCADE)
-    date = models.DateField(("%m/%d/%Y"), auto_now=False, auto_now_add=False)
+    date = models.DateField(("Month, day, Year"), auto_now=False, auto_now_add=False)
+    
+    class TimeOfDay(models.TextChoices):
+        morning = 'Morning'
+        afternoon = 'Afternoon'
+        evening = 'Evening'
+        night = 'Night'
+        
     def __str__(self):
         """returns thy self as text"""
-        return self.text
+        return self.description
