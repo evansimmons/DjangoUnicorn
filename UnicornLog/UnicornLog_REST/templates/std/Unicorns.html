@@ -3,6 +3,12 @@
 {%block content%}
 
 <p> Show me the Unicorns!!!!!</p>
- <p> Show me thier Colors!!!! </p>
+<ul>
+    {% for Unicorn in Unicorns%}
+        <li> {{Unicorn}}</li>
+        {% empty %}
+        <li> no Unicorns in db </li>
+     {% endfor %}
+</ul>
 
 {%endblock content%}

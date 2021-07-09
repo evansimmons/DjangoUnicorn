@@ -3,6 +3,12 @@
 {%block content%}
 
 <p> Show me the sightings</p>
- <p> where did you see it??? </p>
+ <ul>
+    {% for Sighting in Sightings%}
+        <li> {{Sightings}}</li>
+        {% empty %}
+        <li> no sightings in db </li>
+     {% endfor %}
+</ul>
 
 {%endblock content%}

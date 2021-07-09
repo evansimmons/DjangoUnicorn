@@ -17,6 +17,9 @@ class Location(models.Model):
     """the location of a sighting"""
     name = models.CharField(max_length=255)
 #    country = CountryField()
+    class Meta:
+        verbose_name_plural = 'Locations'
+        
     def __str__(self):
         """returns thy self as text"""
         return self.name    
@@ -33,6 +36,9 @@ class Unicorn(models.Model):
     color = Color.choices
     RainbowPoop = models.BooleanField(default=False)
     description = models.TextField()
+    class Meta:
+        verbose_name_plural = 'Unicorns'
+        
     def __str__(self):
         """returns thy self as text"""
         return self.name
@@ -44,6 +50,9 @@ class Sighting(models.Model):
     unicorn = models.ForeignKey(Unicorn, on_delete=CASCADE)
     date = models.DateField(("Month, day, Year"), auto_now=False, auto_now_add=False)
     
+    class Meta:
+        verbose_name_plural = 'Sightings'
+        
     class TimeOfDay(models.TextChoices):
         morning = 'Morning'
         afternoon = 'Afternoon'

@@ -2,6 +2,14 @@
 
 {%block content%}
 
-<p> It will return a list of Locations </p> 
+<p> Locations </p> 
+
+<ul>
+    {% for location in locations%}
+        <li> {{location}}</li>
+        {% empty %}
+        <li> no locations in db </li>
+     {% endfor %}
+</ul>
 
 {%endblock content%}
