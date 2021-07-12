@@ -10,33 +10,33 @@ def index(request):
     return render(request, 'std/index.html')
 
 #TODO .objects method throws error. no idea why
-def Locations(request):
+def locations(request):
     """view the locations page"""
-    locations = Locations.
+    locations = Location.objects.all()
     context = {'locations': locations}
     return render(request, 'std/Locations.html', context)
 
-def Location(request, location_id):
+def location(request, location_id):
     location = Location.objects.get(id=location_id)
     context = {'Location': location}
     return render(request, 'std/Location.html', context)
 
-def Unicorns(request):
+def unicorns(request):
     """view the Unicorns page"""
     unicorns = Unicorn.objects.all()
     context = {'Unicorns': unicorns}
     return render(request, 'std/Unicorns.html', context)
 
-def Unicorn(request, Unicorn_id):
-    Unicorn = Unicorns.objects.get(id=Unicorn_id)
+def unicorn(request, Unicorn_id):
+    unicorn = Unicorn.objects.get(id=Unicorn_id)
     #add sightings foriegn Key
     #sightingsList = Sightings.objects.get(Unicorn_id)
     context = {'Unicorn': Unicorn}
     return render(request, 'std/Unicorn.html', context)    
     
-def Sightings(request):
+def sightings(request):
     """view the sightings page"""
-    sightings = Sightings.objects.all()
+    sightings = Sighting.objects.all()
     context = {'sightings': sightings}
     return render(request, 'std/Sightings.html', context)
 
