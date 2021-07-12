@@ -1,22 +1,26 @@
 from django import forms
 from django.db.models import fields
+from django.forms import widgets
 from .models import *
+#TODO: add 'create' functions for sightings & unicorns
 
-class LocationsForm(forms.ModelForm):
+class locationForm(forms.ModelForm):
     class Meta:
         model = Location
         fields = ['name']
         label ={'name': ''}
 
-class SightingsForm(forms.ModelForm):
+class sightingsForm(forms.ModelForm):
     class Meta:
         model = Sighting
-    pass
-        
-        
+        #need to add the unicorn and the location
+        fields = ['description', 'date']
+        label = {'description' : Sighting.description, 'date' : ''}
 
-class UnicornsForm(forms.ModelForm):
+class unicornsForm(forms.ModelForm):
     class Meta:
-        model = Unicorn
-        fields = ['name', 'Color', 'description']
-        label = {'name': Unicorn.name, 'Color': str(Unicorn.color), 'description' : Unicorn.description}
+        pass
+        #model = Unicorn
+        #fields = ['name', 'color', 'description']
+        #label = {'name': Unicorn.name, 'description' : Unicorn.description}
+        #widgets = {''}

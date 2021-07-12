@@ -1,0 +1,12 @@
+{% extends 'std/base.html' %}
+{%block content%}
+
+<p> New Location! </p> 
+
+<form action="{% url 'UnicornLog_REST:new_location' %}" method = 'post'>
+    {% csrf_token %} <!-- this is a type of securty token-->
+    {{form.as_p}}
+    <button name="submit">Add Location</button>
+</form>
+
+{%endblock content%}

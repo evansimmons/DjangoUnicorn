@@ -20,6 +20,7 @@ urlpatterns = [
     #Locations page
     path('Locations/', views.locations, name='locations'),
     path('locations/', views.locations, name = 'locations'),
+    path('new_location/', views.new_location, name='new_location'),
     
     #view location_id
     path('location/<int:location_id>', views.location, name= 'location'),

@@ -1,7 +1,8 @@
 #from django.db import models
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, Group
 from .models import Location, Unicorn, Sighting
+from .forms import *
 
 
 #views 
@@ -9,7 +10,7 @@ def index(request):
     """home page for UnicornLog_REST"""
     return render(request, 'std/index.html')
 
-#TODO .objects method throws error. no idea why
+#TODO does not print the location name, needs fix
 def locations(request):
     """view the locations page"""
     locations = Location.objects.all()
@@ -18,9 +19,22 @@ def locations(request):
 
 def location(request, location_id):
     location = Location.objects.get(id=location_id)
-    context = {'Location': location}
+    context = {'Location': location.name}
     return render(request, 'std/Location.html', context)
 
+def new_location(request):
+    '''add a new location'''
+    if request.method != 'POST':
+        form = locationForm()
+    else:
+        #POST data is submitted, time to process
+        form = locationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('UnicornLog_REST:locations')
+    context = {'form': form}
+    return render(request, 'std/new_location.html', context)
+        
 def unicorns(request):
     """view the Unicorns page"""
     unicorns = Unicorn.objects.all()
@@ -31,7 +45,7 @@ def unicorn(request, Unicorn_id):
     unicorn = Unicorn.objects.get(id=Unicorn_id)
     #add sightings foriegn Key
     #sightingsList = Sightings.objects.get(Unicorn_id)
-    context = {'Unicorn': Unicorn}
+    context = {'Unicorn': unicorn}
     return render(request, 'std/Unicorn.html', context)    
     
 def sightings(request):
