@@ -6,7 +6,7 @@
 
 <ul>
     {% for location in locations%}
-        <li> {{location}}</li>
+        <li> <a href={% url 'UnicornLog_REST:location' location.id %}> {{location}} </li>
         {% empty %}
         <li> no locations in db </li>
      {% endfor %}
