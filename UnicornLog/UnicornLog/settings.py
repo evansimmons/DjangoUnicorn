@@ -32,9 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #my Apps
     'UnicornLog_REST',
     'users',
+    
+    #Third-Party
     'rest_framework',
+    'bootstrap4',
+    #defualt
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

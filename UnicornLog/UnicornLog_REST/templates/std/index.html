@@ -1,8 +1,13 @@
 {% extends 'std/base.html' %}
 
-{%block content%}
+{%block page_header%}
+    <div class='jumbotron'>
+        <h1 class="display-3"> Let's Find the Unicorns. </h1>
+        <p class='lead'> this sight is to record the sightings of unicorns, thier locations,
+         the color of the unicorn and if the unicon pooped a rainbow </p>
 
-<p> this sight is to record the sightings of unicorns, thier locations,</p>
- <p> the color of the unicorn and if the unicon pooped a rainbow </p>
+        <a class='btn btn-lg btn-primary' href="{% url 'users:register' %}"
+            role='button'> Register &raquo; </a>
+    </div>
 
-{%endblock content%}
+{%endblock page_header%}
