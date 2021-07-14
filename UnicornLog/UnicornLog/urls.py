@@ -17,10 +17,10 @@ from django import urls
 from django.contrib import admin
 from django.urls import include, path
 
-#TODO: need to decouple REST app and base app, for later
+
 urlpatterns = [
     
     path('admin/', admin.site.urls),
-    path('', include('UnicornLog_REST.urls')), #TODO: does this work?
-    
+    path('', include('UnicornLog_REST.urls')),
+    path('users/', include('users.urls')),
 ]
